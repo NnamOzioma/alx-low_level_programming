@@ -14,6 +14,6 @@ int _strlen(char *s)
 	{
 		count++;
 	}
-	return (count);
+	return (what_you_are_return_to_main);
 }
 
