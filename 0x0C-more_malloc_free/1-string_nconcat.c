@@ -1,15 +1,15 @@
+#include "main.h"
+#include <stdlib.h>
+
 /**
  * *malloc_checked - program startup
  * @s1: first char being evaluated
  * @s2: second char being evalutated
- * n: int being evaluated
-(*
+ * @n: int being evaluated
  * Description: concatenates two strings)?
  * Return: return (0) is the required function signature
  */
-
-#include "main.h"
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+char *string_nconcat(char *s1, char *s2, unsigned int n);
 {
 	char *concat;
 	unsigned int length = n;
@@ -30,7 +30,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	concat = malloc(sizeof(char) * (length + 1));
 	if (concat == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 	length = 0;
 	for (string = 0; s1[string]; string++)
