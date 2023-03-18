@@ -1,52 +1,51 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * _strlen - return length of a string
+ * *string_nconcat - concatenates n bytes of a string to another string
+ * @s1: string to append to
+ * @s2: string to concatenate from
+ * @n: number of bytes from s2 to concatenate to s1
  *
- * @s: char type
- * Return:  length of string
+ * Return: pointer to the resulting string
  */
 
-int _strlen(char *s)
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int a;
+	char *s;
+	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
 
-	for (a = 0; s[a] != '\0'; a++)
-	{
+	while (s1 && s1[len1])
 
-	}
-	return (a);
-}
+		len1++;
 
-/**
- * *_strdup - function to return pointer to string
- * @str: pointer to string array input
- * Return: pointer to string created
- */
+	while (s2 && s2[len2])
 
-char *_strdup(char *str)
-{
-	char *ptr;
-	int size;
-	int x;
+		len2++;
 
-	if (str == NULL)
-	{
+	if (n < len2)
+
+		s = malloc(sizeof(char) * (len1 + n + 1));
+
+	else
+		s = malloc(sizeof(char) * (len1 + len2 + 1));
+
+	if (!s)
 		return (NULL);
-	}
-	size = _strlen(str) + 1;
-	ptr = malloc(size * sizeof(char));
 
-	x = 0;
-	while (x < size)
+	while (i < len1)
 	{
-		if (ptr == NULL)
-		{
-			return (NULL);
+		s[i] = s1[i];
+
+		i++;
+
 	}
-		ptr[x] = str[x];
-		x++;
-	}
-	return (ptr);
+	while (n < len2 && i < (len1 + n))
+		s[i++] = s2[j++];
+	while (n >= len2 && i < (len1 + len2))
+		s[i++] = s2[j++];
+
+	s[i] = '\0';
+	return (s);
 }
+
